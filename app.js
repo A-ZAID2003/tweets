@@ -87,7 +87,7 @@ app.post("/login/", async (req, res) => {
 
 // Middleware for JWT authentication
 function authenticateToken(req, res, next) {
-  const token = req.header("Authorization");
+  const token = req.header("Authorization").split(" ")[1];
 
   if (!token) {
     res.status(401).send("Invalid JWT Token");
